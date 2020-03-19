@@ -13,29 +13,26 @@
     }//end of session check
     ?>
 
-    <!DOCTYPE html>
-    <head>
-      <title>Something</title>
-    </head>
-    <body>
-      <h1>
-        Delete Records
-      </h1>
-    <?php  
+    <?php require('header.php');
+     
     if(isset($_SESSION['admin'])){
-      require('nav.php'); ?>
-      <?php
+     
         $stmt=$conn->prepare("SELECT * FROM users");
         $stmt->execute();
+        //start of list
+        echo '<ul class="list-group list-group-flush">';
         while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-          echo "<p>".$row['userid']." ".$row['username'].
-            "<a href='delete.php?userid=".$row['userid']."'>Delete</a></p>";
+          echo '<li class="list-group-item">';
+          echo " ".$row['userid']." ".$row['username']."<a href='delete.php?userid=".$row['userid']."'>
+            <button type='button' class='btn btn-danger' style='margin-left: 10px;'> Delete</button>
+            </a>";
+          echo '</li>';
         }
-      
+        echo '</ul>';
+        //end of list
     }//end of session check
     else {
       echo('<h2>Please Log in</h2>');
     } 
    ?> 
-</body>
-</html>
+    <?php require('footer.php');

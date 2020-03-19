@@ -1,4 +1,6 @@
 <?php require('connect.php');
+  require('header.php');
+  
     session_start();
     if(isset($_POST['submit'])){
 
@@ -28,29 +30,43 @@
 
     if(!isset($_SESSION['admin'])){
 ?>
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <title>Login Page</title>  
-  </head>  
-  <body>
-    <?php require('nav.php'); ?>  
-  
-  <form name="login" action="" method="POST">
-        <label>Name</label>
-        <input type="text" name="namebox" length="30">
-        <br/>
-        <label>Password</label>
-        <input type="password" name="passwordbox" length="30">
-        <br/>
-        <input type="submit" name="submit">
-  </form>
+<div class="card" id="cardstyle">
+  <div class="card-header">
+    Game Shop
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Login Form</h5>
+    <div class="card-text">
+      <form name="login" action="" method="POST">
+        <div class="form-group">
+          <label for="namebox">Name</label>
+          <input id="namebox" type="text" name="namebox" length="30">
+        </div>
+        <div class="form-group">
+          <label for="passwordbox">Password</label>
+          <input id="passwordbox" type="password" name="passwordbox" length="30">
+        </div>
+        <button type="submit" name="submit" class="btn btn-primary">
+      Submit Form
+    </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+
 <?php
     }
     else {
-      require('nav.php');
-      echo ("<h2>You have already logged in!</h2>");
+      
+      echo ('<div class="alert alert-success" role="alert">
+              You have already logged in!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+            </div>');
     }
-?>
-</body>
-</html>
+  require('footer.php');?>
