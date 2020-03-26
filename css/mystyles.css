@@ -1,0 +1,16 @@
+  
+#cardstyle {
+  width: 50%; 
+  margin: 20px auto;
+}
+
+#dogshow {
+  
+  width: 50%;
+  margin: 50px auto;
+  
+}
+
+#passwordfeedback {
+  color: #ff0000;
+}
