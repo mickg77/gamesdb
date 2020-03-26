@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Login</a>
+          <a class="nav-link" href="index.php">Login(b)</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="logout.php">Logout</a>
@@ -36,7 +36,7 @@
           <a class="nav-link" href="insert.php">Insert</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="update.php">Update</a>
+          <a class="nav-link" href="update.php">Update(a)</a>
         </li>
      
       </ul>

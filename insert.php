@@ -1,14 +1,13 @@
 <?php
       session_start();
+      require('connect.php');
+      require('header.php');
+
       if(isset($_SESSION['admin'])){
-          require('connect.php');
+         
 ?>
-          <!DOCTYPE html>
-          <head>
-            <title>Something</title>
-          </head>
-          <body>
-            <?php require('nav.php'); 
+
+  <?php  
             if(isset($_POST['submit'])){ //when the form has been submitted
 
               $username   =   $_POST['namebox'];
@@ -40,19 +39,51 @@
 
           }//end of submit check
           ?>
-            <form name="form1" action="" method="POST">
-              <input type="text" name="namebox" placeholder="enter name" >
-              <input type="password" name="passwordbox" >
-              <input type="email" name="emailbox" >
-              <input type="date" name="datebox" >
-              <input type="role" name="rolebox" >
-              <input type="submit" name="submit">
-            </form>
-          </body>
-          </html>
+
+  <div class="card" id="cardstyle">
+    <div class="card-header">
+      Insert a Record
+    </div>
+    <div class="card-body">
+      
+      <form name="form1" action="" method="POST">
+        <div class="form-group">
+          <label for="namebox">Username</label>
+          <input type="text" name="namebox" placeholder="enter name" id="namebox">
+        </div>
+        <div class="form-group">
+          <label for="passwordbox">Password</label>
+          <input type="password" name="passwordbox" id="passwordbox">
+          <span id="passwordfeedback"></span>
+        </div>
+        <div class="form-group">
+           <label for="emailbox">Email</label>
+          <input type="email" name="emailbox" id="emailbox">
+        </div>
+         <div class="form-group">
+           <label for="datebox">DOB</label>
+          <input type="date" name="datebox" id="datebox">
+        </div>
+        
+        <div class="form-group">
+          <label for="rolebox">Role</label>
+          <select name="rolebox" id="rolebox">
+            <option value="user">User</option>
+            <option value="admin">admin</option>
+          </select>
+        </div>
+        
+        
+        
+          <button type="submit" name="submit">Insert</button>
+      
+      </form>
+      </div>
+    </div>
     <?php
     }//end of session check
     else {
       echo "<h1>Please Login</h1>"; 
     }
-    ?>
+  require('footer.php');  
+  ?>

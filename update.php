@@ -1,25 +1,17 @@
 <?php
  session_start();
+ require('header.php');
  if(isset($_SESSION['admin'])){
   require('connect.php');
- ?>
-   
-  <!DOCTYPE html>
-  <head>
-    <title>Something</title>
-  </head>
-  <body>
-    <h1>
-      Update Records
-    </h1>
-  <?php
-   require('nav.php');
+ 
+  
    if(isset($_GET['userid'])){//runs if get method has been used with userid
     $id=$_GET['userid'];
     $stmt=$conn->prepare("SELECT * FROM users WHERE userid=:userid");
     $stmt->bindParam(":userid",$id);
     $stmt->execute();
     
+   
     while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
       
       echo '
@@ -31,7 +23,8 @@
       
       ';
      
-    } 
+    }
+    
   }//end of get method code
  
   else if(isset($_POST['update'])){
@@ -50,16 +43,25 @@
    
     $stmt=$conn->prepare("SELECT * FROM users");
     $stmt->execute();
+   
+    echo '<ul class="list-group list-group-flush">';
+   
     while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+      echo '<li class="list-group-item">';
       echo "<p>".$row['userid']." ".$row['username'].
-        "<a href='update.php?userid=".$row['userid']."'>Update</a></p>";
+        "<a class='btn btn-primary' href='update.php?userid=".$row['userid']."'>Update</a>
+        
+        </p>";
+      echo '</li>';
     }
+   
+    echo '</ul>';
 
   
   }
   else {
       echo ('<h2>Please Login</h2>');
     }
-  ?>
-</body>
-</html>
+  
+  require('footer.php');
+?>
